@@ -7,7 +7,9 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Поле  E-mail является обязательным.'],
     unique: true,
     validate: {
-      validator: (v) => validator.isEmail(v),
+      validator(v) {
+        return validator.isEmail(v);
+      },
       message: 'Введен не верный формат email',
     },
   },

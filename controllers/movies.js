@@ -12,7 +12,6 @@ const getUserMovies = (req, res, next) => {
 };
 
 const addMovie = (req, res, next) => {
-  // const { user } = req;
   Movie.findOne({ movieId: req.body.movieId })
     .then((movie) => {
       if (movie) {
@@ -30,13 +29,15 @@ const addMovie = (req, res, next) => {
 };
 
 const removeMovie = (req, res, next) => {
-  Movie.findById(req.params.id)
+  const { movieId } = req.params;
+
+  Movie.findById(movieId)
     .orFail(() => new NotFoundError('Фильма с таким id нет.'))
     .then((movie) => {
       if (movie.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Вы не можете удалять фильмы других пользователей.');
       }
-      return Movie.findByIdAndRemove(req.params.id)
+      return Movie.findByIdAndRemove(movieId)
         .then((m) => res.send(m));
     })
     .catch(next);

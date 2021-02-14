@@ -26,15 +26,19 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле image является обязательным.'],
     validate: {
-      validator: (v) => validator.isUrl(v),
-      message: 'Введен не верный формат ссылки',
+      validator(v) {
+        return validator.isURL(v);
+      },
+      message: 'Введен не верный формат ссылки.',
     },
   },
   trailer: {
     type: String,
     required: [true, 'Поле trailer является обязательным.'],
     validate: {
-      validator: (v) => validator.isUrl(v),
+      validator(v) {
+        return validator.isURL(v);
+      },
       message: 'Введен не верный формат ссылки',
     },
   },
@@ -42,7 +46,9 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле thumbnail является обязательным.'],
     validate: {
-      validator: (v) => validator.isUrl(v),
+      validator(v) {
+        return validator.isURL(v);
+      },
       message: 'Введен не верный формат ссылки',
     },
   },
