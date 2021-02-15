@@ -1,6 +1,56 @@
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 
+const userCreateValidator = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email()
+      .messages({
+        'any.required': 'Поле  E-mail является обязательным.',
+        'string.email': 'Введен не верный формат email.',
+      }),
+    password: Joi.string().required().min(8)
+      .messages({
+        'any.required': 'Поле  password является обязательным.',
+        'string.min': 'Минимальная длина пароля 8 символов.',
+      }),
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'any.required': 'Поле Имя является обязательным.',
+        'string.min': 'Минимальная длина имени 2 символа.',
+        'string.max': 'Максимальная длина имени 30 символов.',
+      }),
+  }),
+});
+
+const userUpdateValidator = celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(2).max(30)
+      .messages({
+        'string.min': 'Минимальная длина имени 2 символа.',
+        'string.max': 'Максимальная длина имени 30 символов.',
+      }),
+    email: Joi.string().email()
+      .messages({
+        'string.email': 'Введен не верный формат email.',
+      }),
+  }).unknown(true),
+});
+
+const userSignInValidator = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email()
+      .messages({
+        'any.required': 'Поле  E-mail является обязательным.',
+        'string.email': 'Введен не верный формат email.',
+      }),
+    password: Joi.string().required().min(8)
+      .messages({
+        'any.required': 'Поле  password является обязательным.',
+        'string.min': 'Минимальная длина пароля 8 символов.',
+      }),
+  }).unknown(true),
+});
+
 const movieBodyValidator = celebrate({
   body: Joi.object().keys({
     country: Joi.string().required()
@@ -73,6 +123,9 @@ const movieIdValidator = celebrate({
 });
 
 module.exports = {
+  userCreateValidator,
+  userSignInValidator,
+  userUpdateValidator,
   movieBodyValidator,
   movieIdValidator,
 };

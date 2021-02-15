@@ -20,16 +20,6 @@ mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
 });
 
-// тестовый пользователь
-app.use((req, res, next) => {
-  req.user = {
-    _id: '5fe37be287e71126a8b57312',
-  };
-
-  next();
-});
-//
-
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
