@@ -7,20 +7,20 @@
 
 ## Описание
 
-# возвращает информацию о пользователе (email и имя)
+### возвращает информацию о пользователе (email и имя)
 GET /users/me
 
-# обновляет информацию о пользователе (email и имя)
+### обновляет информацию о пользователе (email и имя)
 PUT /users/me
 
-# возвращает все сохранённые пользователем фильмы
+### возвращает все сохранённые пользователем фильмы
 GET /movies
 
-# создаёт фильм с переданными в теле
-# country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail 
+### создаёт фильм с переданными в теле
+#### country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail 
 POST /movies
 
-# удаляет сохранённый фильм по _id
+#### удаляет сохранённый фильм по _id
 DELETE /movies/movieId 
 
 
