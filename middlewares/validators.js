@@ -65,6 +65,14 @@ const movieBodyValidator = celebrate({
   }),
 });
 
+const movieIdValidator = celebrate({
+  params: Joi.object().keys({
+    movieId: Joi.string().alphanum().length(24).hex()
+      .message('Передан не валидный id.'),
+  }),
+});
+
 module.exports = {
   movieBodyValidator,
+  movieIdValidator,
 };
