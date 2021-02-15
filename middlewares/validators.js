@@ -19,7 +19,7 @@ const userCreateValidator = celebrate({
         'string.min': 'Минимальная длина имени 2 символа.',
         'string.max': 'Максимальная длина имени 30 символов.',
       }),
-  }),
+  }).unknown(true),
 });
 
 const userUpdateValidator = celebrate({
@@ -112,14 +112,14 @@ const movieBodyValidator = celebrate({
       .messages({
         'any.required': 'Поле nameEN является обязательным.',
       }),
-  }),
+  }).unknown(true),
 });
 
 const movieIdValidator = celebrate({
   params: Joi.object().keys({
     movieId: Joi.string().alphanum().length(24).hex()
       .message('Передан не валидный id.'),
-  }),
+  }).unknown(true),
 });
 
 module.exports = {
