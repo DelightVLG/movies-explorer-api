@@ -7,3 +7,6 @@ module.exports = {
   PORT,
   MONGO_URL,
 };
+
+// domains api.vlmovies.students.nomoredomains.rocks www.api.vlmovies.students.nomoredomains.rocks
+// vlmovies.students.nomoredomains.rocks

@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(routes);
 
-app.use(limiter);
 app.use(requestLogger);
 app.use(errorLogger);
+app.use(limiter);
 app.use(errors());
 
 app.use(errorHandler);
