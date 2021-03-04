@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 const { errors } = require('celebrate');
 
 const { PORT, MONGO_URL } = require('./config');
@@ -21,6 +22,7 @@ mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
 });
 
+app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
