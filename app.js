@@ -22,7 +22,16 @@ mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
 });
 
-app.use(cors());
+const allowedCors = [
+  'https://api.vlmovies.students.nomoredomains.rocks/',
+  'https://vlmovies.students.nomoredomains.rocks/',
+  'http://localhost:3001',
+  'http://localhost:3000',
+];
+
+app.use(cors({
+  origin: allowedCors,
+}));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
