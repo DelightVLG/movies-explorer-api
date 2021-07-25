@@ -7,6 +7,12 @@
 
 ## Описание
 
+### создает пользователя (email, имя, пароль)
+POST /signup
+
+### получить токен (email, пароль)
+POST /signin
+
 ### возвращает информацию о пользователе (email и имя)
 GET /users/me
 
@@ -30,4 +36,4 @@ REST APi
 Node.js, Express.js, MongoDB
 
 ## Ссылка на api
-https://api.vlmovies.students.nomoredomains.rocks/
+https://movies-explorer-api-vlg.herokuapp.com/ 
